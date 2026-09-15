@@ -1,0 +1,46 @@
+{
+  "id": "short-14-hydration",
+  "title": "Why Drink Water In The Morning",
+  "composition": "Short14Water",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 40
+  },
+  "voiceStatus": "estimated-not-generated",
+  "vo": [
+    { "beat": "hook", "text": "Eight hours. No food. No water.", "start": 0.4, "end": 2.8 },
+    { "beat": "setup", "text": "Every night, your body keeps losing water —", "start": 3.6, "end": 6.0 },
+    { "beat": "setup", "text": "just breathing, just sweating, even at rest.", "start": 6.4, "end": 9.4 },
+    { "beat": "setup", "text": "No food or drink to replace it, for eight straight hours.", "start": 9.8, "end": 13.8 },
+    { "beat": "quiz", "text": "Guess how much water you lose, just sleeping.", "start": 14.8, "end": 17.6 },
+    { "beat": "reveal", "text": "About three hundred milliliters —", "start": 18.4, "end": 20.6 },
+    { "beat": "reveal", "text": "humid air breathed out, sweat off your skin.", "start": 21.0, "end": 24.0 },
+    { "beat": "reveal", "text": "That's the mild dehydration you wake up with.", "start": 24.4, "end": 27.4 },
+    { "beat": "twist", "text": "Drink about a glass first thing,", "start": 30.4, "end": 32.6 },
+    { "beat": "twist", "text": "and resting metabolism can spike up to thirty percent —", "start": 33.0, "end": 36.0 },
+    { "beat": "twist", "text": "peaking within the hour, then fading.", "start": 36.4, "end": 37.8 },
+    { "beat": "loop", "text": "Not a wellness trend. Just replacing what you lost.", "start": 38.2, "end": 39.8 }
+  ],
+  "beats": [
+    { "id": "hook", "start": 0.0, "end": 3.4, "visual": "frame 0: gauge LOW, sun icon, title, punch-in settle" },
+    { "id": "setup", "start": 3.4, "end": 14.4, "visual": "gauge rewinds to FULL at bedtime, drains through sped-up night" },
+    { "id": "quiz", "start": 14.4, "end": 18.0, "visual": "PauseCard — guess the overnight water loss" },
+    { "id": "reveal", "start": 18.0, "end": 30.0, "visual": "~300 mL stat chip + breathing/skin icon chips; gauge settles LOW" },
+    { "id": "twist", "start": 30.0, "end": 38.0, "visual": "metabolism spike chart, solid verified rise to +30%, dashed unlabeled fade" },
+    { "id": "loop", "start": 38.0, "end": 40.0, "visual": "dissolve back into hook composition, grow zoom, no CTA" }
+  ],
+  "hydration": {
+    "overnightLossMl": 300,
+    "overnightLossSourceNote": "insensible loss ~800 mL/day (400 skin + 400 respiratory); ~1/3 over an 8h night",
+    "waterDoseMl": 500,
+    "rmrPeakPct": 30,
+    "rmrPeakMinutes": 35,
+    "rmrOnsetMinutes": 10,
+    "thermogenicResponseKJ": 100,
+    "thermogenicResponseKcal": 24,
+    "warmingWaterSharePct": 40,
+    "source": "Boschmann et al., J Clin Endocrinol Metab 88(12):6015-6019, 2003"
+  }
+}

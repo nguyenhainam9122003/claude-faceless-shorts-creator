@@ -55,6 +55,7 @@ Retention devices that transfer across niches:
 | 16 | **Cybersecurity awareness** | fake phishing UI in the browser clone — annotated | browser lib ✅ | the URL that isn't paypal.com ✅ (short-8) · `rn`→`m` lookalikes · why "123456" falls in 0.02s (live counter) · QR code scams |
 | 17 | **Language / grammar** | typography morphs (affect→effect) | shorts kit only | commonly confused words · etymology trees · silent-letter history |
 | 18 | **Poker / game odds** | cards are just rounded rects; odds bars | `lib/cards.tsx` | why you fold pocket jacks · pot odds in 30s · the math of bluffing |
+| 19 | **Health & body facts** | a level gauge (hydration, sleep debt, caffeine half-life) + a verified-study curve; every claim is either physiology or a cited peer-reviewed number, never wellness-influencer hand-waving | `lib/health.tsx` ✅ (reuses `lib/chart.tsx`'s `Curve`/`EndDot` for any numeric payoff) | why drink water in the morning ✅ (short-14) · caffeine's 5-hour half-life (why the 2pm coffee wrecks sleep) · how much sleep debt actually costs you · why cracking knuckles doesn't cause arthritis |
 
 ## The queue (agreed 2026-07-10)
 
@@ -118,6 +119,34 @@ Goal: multiple niches, one per short, proving the FLOW (script → beats → lin
     Seeds a Vietnamese-language track and a "one algorithm, explained slowly" format
     distinct from short-3's race — quick sort alone, binary search, insertion sort could
     all reuse `SortBoard`/`lib/algo.tsx` the same way.
+
+14. **short-14 · Health & Body** — "Why Drink Water In The Morning" ✅ (`Short14Water`;
+    new niche lib `lib/health.tsx`), also user-requested out of band. Opens niche #19.
+    Two facts, both verified by web search BEFORE scripting (never trusted from training
+    data alone): (1) insensible overnight water loss ≈ 300 mL, from ~800 mL/day of
+    combined skin + respiratory loss scaled to an 8h night; (2) Boschmann et al., *J Clin
+    Endocrinol Metab* 88(12):6015-6019, 2003 — 500 mL water raises resting metabolic rate
+    up to +30%, peaking at 30-40 min, total effect only ≈24 kcal. The video states exactly
+    those two numbers and nothing stronger (no "boosts metabolism all day", no weight-loss
+    claim — the paper doesn't show that).
+    - `lib/health.tsx` is deliberately small: `HydrationTank` (a continuous 0..1 level
+      gauge, same "one function of frame" discipline as short-13's `kFloat`) and
+      `SkyIcon` (sun/moon via a straight-line ray fan and a two-circle crescent — no risky
+      SVG paths). The numeric payoff (the metabolism curve) reuses `lib/chart.tsx`'s
+      `makeScale`/`Curve`/`EndDot` **unmodified** — proof that chart.tsx's plotting core
+      was never actually money-specific, just money-flavored by its first user.
+    - **A bug worth remembering: `EndDot`'s `value=` prop overrides the live curve
+      position.** First draft passed `value={30}` to badge the metabolism spike — which
+      printed "+30%" from the instant the TWIST beat mounted, before the curve had drawn
+      a single pixel. Dropping `value` (pass `label=""` instead, so the component still
+      renders a number) makes the label ride `head.y` and climb WITH the line, exactly
+      like short-10/11's pattern — the payoff number must earn its reveal, not announce it.
+    - Same honesty discipline as short-12's sagitta fix: the metabolism curve is solid
+      only where the paper's numbers back it (0 → +30% at 30-40 min), then a DASHED,
+      unlabeled tail for the qualitative "then fades" — the picture never asserts a decay
+      number the source doesn't give.
+    - Seeds a body-facts series: caffeine's ~5h half-life curve, sleep-debt cost, the
+      knuckle-cracking myth — all reuse `HydrationTank`-style gauges or chart.tsx curves.
 
 Each short adds at most ONE new niche lib; the shorts kit (captions, hook, pause card,
 progress bar) is shared by all.
