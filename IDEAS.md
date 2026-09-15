@@ -103,6 +103,22 @@ Goal: multiple niches, one per short, proving the FLOW (script → beats → lin
    - One new SFX recipe: `launch-thump` (a muffled mortar/rocket push, deliberately NOT a war-film cannon crack — brand §10's calm register). Audition at −15.6 LUFS.
    - Seeds the **physics series** (all reuse `lib/orbit.tsx`, which already exports `vEsc`/`period`/`gAt`): escape velocity · why the Moon doesn't fall · why rockets go sideways, not up · geostationary orbit · tides.
 
+13. **short-13 · Algorithms** — "Sắp Xếp Nổi Bọt" (Bubble Sort), **Vietnamese-language**,
+    user-requested out of band (not the next-slate item below — folder numbers and slate
+    numbers are independent; see the note under that table). Reuses `lib/algo.tsx`
+    (`bubbleSteps`, `seededShuffle`) unmodified and adds `SortBoard` — a solo-array
+    explainer (value labels, comparison bracket, smooth swap slide) as a sibling to
+    short-3's race-oriented `BarPanel`, plus `passBoundaries`/`passOfOp`/`sortedTailCount`
+    for the pass counter and the growing sorted-tail shading. `lib/fonts.ts` now also
+    loads the `vietnamese` Google Fonts subset (additive) so diacritics render anywhere.
+    Composed + QA'd + rendered (40s, silent). **Blocked on `ELEVENLABS_API_KEY`** (not
+    set in `.env`) for voice + SFX — see `shorts/short-13-bubble-sort/script.md` for the
+    three real animation bugs QA caught (all one root cause: treating a stalled
+    continuous op-position as "idle" instead of gating every visual on actual progress).
+    Seeds a Vietnamese-language track and a "one algorithm, explained slowly" format
+    distinct from short-3's race — quick sort alone, binary search, insertion sort could
+    all reuse `SortBoard`/`lib/algo.tsx` the same way.
+
 Each short adds at most ONE new niche lib; the shorts kit (captions, hook, pause card,
 progress bar) is shared by all.
 
@@ -119,6 +135,10 @@ sphere + integrated trajectory (orbit) · AI stills + Ken Burns (story) · layer
 
 **Never rendered by this channel:** many independent agents · a lattice coming alive · a settling
 network · a perceptual proof · refracting light · text as the subject · a mechanism in cutaway.
+
+**Note:** these row numbers are slate order, not `shorts/short-N` folder numbers — an
+out-of-band request already claimed folder `short-13` (see item 13 above), so this
+table's "13" through "20" will land in whatever folders are free when each is built.
 
 | # | Video | Niche | New engine | The motion language nothing in the repo can do |
 |---|-------|-------|-----------|-----------------------------------------------|

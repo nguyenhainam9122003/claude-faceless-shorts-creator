@@ -8,6 +8,14 @@
   "transparent": false
  },
  {
+  "id": "Short1Chess",
+  "durationInSeconds": 42,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
   "id": "Short10Fees",
   "durationInSeconds": 42,
   "fps": 30,
@@ -32,8 +40,8 @@
   "transparent": false
  },
  {
-  "id": "Short1Chess",
-  "durationInSeconds": 42,
+  "id": "Short13Bubble",
+  "durationInSeconds": 40,
   "fps": 30,
   "width": 1080,
   "height": 1920,
