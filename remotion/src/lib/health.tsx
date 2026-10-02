@@ -116,6 +116,60 @@ export const SkyIcon: React.FC<{
   );
 };
 
+// =============================================================================
+// HYDRATION COLOR SCALE — N horizontal bands (index 0 = palest, top) + a pointer
+// at a continuous position (1..bands.length). Seeds short-15 (urine color chart);
+// the lib only draws — the shot decides what label rides alongside the pointer,
+// same "lib draws, shot narrates" split as `lib/chart.tsx`'s `Curve`/`EndDot`.
+// =============================================================================
+export const HydrationColorScale: React.FC<{
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  bands: string[]; // hex colors, index 0 = palest (top)
+  pointerBand: number; // continuous, 1..bands.length
+  pointerColor?: string;
+}> = ({ x, y, w, h, bands, pointerBand, pointerColor = '#ffffff' }) => {
+  const n = bands.length;
+  const bandH = h / n;
+  const clamped = Math.max(1, Math.min(n, pointerBand));
+  const pointerY = y + (clamped - 0.5) * bandH;
+  return (
+    <>
+      <div
+        style={{
+          position: 'absolute',
+          left: x,
+          top: y,
+          width: w,
+          height: h,
+          borderRadius: 16,
+          overflow: 'hidden',
+          border: '3px solid rgba(255,255,255,0.28)',
+        }}
+      >
+        {bands.map((c, i) => (
+          <div key={i} style={{ position: 'absolute', left: 0, top: i * bandH, width: '100%', height: bandH + 1, background: c }} />
+        ))}
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: x + w + 16,
+          top: pointerY,
+          transform: 'translateY(-50%)',
+          width: 0,
+          height: 0,
+          borderTop: '18px solid transparent',
+          borderBottom: '18px solid transparent',
+          borderRight: `22px solid ${pointerColor}`,
+        }}
+      />
+    </>
+  );
+};
+
 // small caption-style label under a gauge ("FULL" / "LOW" / a live percentage)
 export const GaugeLabel: React.FC<{ x: number; y: number; w: number; text: string; color?: string }> = ({
   x,

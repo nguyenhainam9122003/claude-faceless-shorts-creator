@@ -55,7 +55,7 @@ Retention devices that transfer across niches:
 | 16 | **Cybersecurity awareness** | fake phishing UI in the browser clone — annotated | browser lib ✅ | the URL that isn't paypal.com ✅ (short-8) · `rn`→`m` lookalikes · why "123456" falls in 0.02s (live counter) · QR code scams |
 | 17 | **Language / grammar** | typography morphs (affect→effect) | shorts kit only | commonly confused words · etymology trees · silent-letter history |
 | 18 | **Poker / game odds** | cards are just rounded rects; odds bars | `lib/cards.tsx` | why you fold pocket jacks · pot odds in 30s · the math of bluffing |
-| 19 | **Health & body facts** | a level gauge (hydration, sleep debt, caffeine half-life) + a verified-study curve; every claim is either physiology or a cited peer-reviewed number, never wellness-influencer hand-waving | `lib/health.tsx` ✅ (reuses `lib/chart.tsx`'s `Curve`/`EndDot` for any numeric payoff) | why drink water in the morning ✅ (short-14) · caffeine's 5-hour half-life (why the 2pm coffee wrecks sleep) · how much sleep debt actually costs you · why cracking knuckles doesn't cause arthritis |
+| 19 | **Health & body facts** | a level gauge (hydration, sleep debt, caffeine half-life) or an N-band chart + pointer (urine color, pain scales) + a verified-study curve; every claim is either physiology or a cited peer-reviewed number, never wellness-influencer hand-waving | `lib/health.tsx` ✅ (reuses `lib/chart.tsx`'s `Curve`/`EndDot` for any numeric payoff) | why drink water in the morning ✅ (short-14) · what urine color means ✅ (short-15) · caffeine's 5-hour half-life (why the 2pm coffee wrecks sleep) · how much sleep debt actually costs you · why cracking knuckles doesn't cause arthritis |
 
 ## The queue (agreed 2026-07-10)
 
@@ -147,6 +147,33 @@ Goal: multiple niches, one per short, proving the FLOW (script → beats → lin
       number the source doesn't give.
     - Seeds a body-facts series: caffeine's ~5h half-life curve, sleep-debt cost, the
       knuckle-cracking myth — all reuse `HydrationTank`-style gauges or chart.tsx curves.
+
+15. **short-15 · Health & Body** — "What Urine Color Means" ✅ (`Short15Urine`), user
+    picked it from a 100-topic brainstorm list for niche #19. Extends `lib/health.tsx`
+    (additive, no new lib) with `HydrationColorScale` — N color bands + a continuous
+    pointer, the same contract as `HydrationTank`. Both facts web-verified before
+    scripting: Armstrong LE et al., *Int J Sport Nutr*, 1994's 8-shade chart (r = 0.80
+    vs. urine specific gravity, bands 1-3 = well hydrated) and riboflavin (vitamin B2)
+    as a real, common confounder — it fluoresces bright/neon yellow independent of
+    hydration and is the single most common real-world "why is my pee neon" confusion.
+    - **The confounder is drawn OFF the validated scale, never on it.** The pointer
+      never moves during the TWIST beat — only a separate neon swatch appears beside
+      it — because riboflavin changes nothing the 1994 chart was ever validated
+      against. Animating the pointer into a "fake" position to sell the twist would
+      have visually claimed the opposite of what the source supports. Same discipline
+      as short-14's solid/dashed curve split.
+    - **QA caught a VO/visual direction mismatch, not a code bug.** The pointer's
+      single continuous SETUP sweep only ever demonstrates "less water → darker" (a
+      down-then-up sweep within SETUP would park the pointer back at pale right before
+      the quiz, giving the answer away). The original setup3 line narrated the reverse
+      direction ("fades back toward pale") while the pointer was still sweeping dark —
+      fixed by rewriting the LINE to a direction-agnostic close, not by adding
+      animation complexity to chase a claim the beat wasn't shaped to show. Worth
+      remembering: not every sync bug is in the code — sometimes the script promised
+      a visual beat that the choreography was never going to deliver.
+    - Seeds more "verified clinical chart" videos: the Bristol stool scale, the
+      Wong-Baker pain scale, blood pressure category bands — all reuse
+      `HydrationColorScale` as a generic N-band-plus-pointer gauge.
 
 Each short adds at most ONE new niche lib; the shorts kit (captions, hook, pause card,
 progress bar) is shared by all.
